@@ -55,7 +55,7 @@ struct ChangeReportView: View {
                 }//: VStack
             }
         }//: HStack
-        ContextBoxView(context: "And if you want, think about what you should do to change your feelings and press the button below")
+        ContextBoxView(context: "Think about what you need to do to change your feelings and draw a picture 🎨")
         NavigationLink(destination: LastView(cheerUpContext: ChangeLastViewContext), isActive: $isNavigationLinkActive){
         }
         .navigationBarItems(trailing:

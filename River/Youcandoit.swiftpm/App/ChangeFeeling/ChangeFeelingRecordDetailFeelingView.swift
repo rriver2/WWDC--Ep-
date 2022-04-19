@@ -45,11 +45,11 @@ struct ChangeFeelingRecordDetailFeelingView: View {
                     .font(.largeTitle)
                     .foregroundColor(Color.black)
                 
-                if(user.Second.emotionOpacity == 5){
+                if(user.Second.emotionOpacity == 5.0){
                     Image(systemName: "heart.fill")
                         .font(.system(size: 400))
                         .overlay(
-                            Text("Tell me more about it !")
+                            Text("Tell me about it! ")
                                 .font(.title)
                                 .foregroundColor(Color.black)
                         )

@@ -83,7 +83,7 @@ struct TodayReportView: View {
                     }//: VStack
                 }
             }//: HStack
-            ContextBoxView(context: "What do you do with this feeling?")
+            ContextBoxView(context: "Please express your feelings in Drawing 🎨")
         NavigationLink(destination: ChangeEmotionView(user: user), isActive: $isNavigationLinkActive){
         }
         .navigationBarItems(trailing:

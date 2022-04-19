@@ -14,34 +14,33 @@ struct DrawingHomeView : View {
     @State var isDraw = true
     @State var color : Color = .black
     @State var type : PKInkingTool.InkType = .pen
-    @State var colorPicker = false
     
     var body: some View{
-        HStack{
-            DrawingView(canvas: $canvas, isDraw: $isDraw, type: $type, color: $color)
-            VStack{
-                // 지우개
-            Button(action:{
-                isDraw = false
-            }, label: {
-                Image(systemName: "trash")
-                    .font(.system(size: 40))
-                    .foregroundColor(Color.white)
-            })
+        VStack{
+            
+            HStack{
+                
                 // 색 변경
-                Button(action: {
-                    colorPicker.toggle()
-                }){
-                        Text("🎨")
+                ColorPicker("Pick Color", selection: $color)
+                    .padding(.trailing, 10.0)
+                    .frame(height: 20.0)
+                    .onChange(of: color) { newValue in
+                        isDraw = true
+                    }
+                // 지우개
+                Button(action:{
+                    isDraw = false
+                }, label: {
+                    Image(systemName: "trash")
                         .font(.system(size: 40))
                         .foregroundColor(Color.white)
-                }
+                })
                 // 펜
                 Button(action: {
                     isDraw = true
                     type = .pen
                 }){
-                        Image(systemName: "scribble")
+                    Image(systemName: "scribble")
                         .font(.system(size: 40))
                         .foregroundColor(Color.white)
                 }
@@ -50,7 +49,7 @@ struct DrawingHomeView : View {
                     isDraw = true
                     type = .marker
                 }){
-                        Image(systemName: "scribble.variable")
+                    Image(systemName: "scribble.variable")
                         .font(.system(size: 40))
                         .foregroundColor(Color.white)
                 }
@@ -58,15 +57,11 @@ struct DrawingHomeView : View {
                 //                        SaveImage()
                 
             }
-                
-        }
-        .sheet(isPresented: $colorPicker){
-            ColorPicker("Pick Color", selection: $color)
-                .padding()
+            DrawingView(canvas: $canvas, isDraw: $isDraw, type: $type, color: $color)
         }
         .padding(5)
         .background(Color.black)
-        .padding()
+        .padding(20)
     }
     
     //    func SaveImage(){

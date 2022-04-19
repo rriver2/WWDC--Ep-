@@ -65,7 +65,7 @@ struct RecordView: View {
                 }
             }
             Spacer()
-            ContextBoxView(context: "Tell me today’s emotions 😚")
+            ContextBoxView(context: "How you feel today 😚 ?")
 
             NavigationLink(destination: RecordDetailFeelingView(user : user), isActive: $isNavigationLinkActive) {
             }.navigationBarItems(trailing:

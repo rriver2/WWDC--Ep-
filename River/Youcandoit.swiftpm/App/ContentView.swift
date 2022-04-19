@@ -29,13 +29,11 @@ struct ContentView: View {
     @State private var username: String = ""
     
     let MainViewContext : [String] = [
-        "What is your name?",
-        "hi, ",
-        "I'm the heart in you.",
-        "These days, I am losing my color due to the lack of emotions in my town.",
-        "I want you to help me!",
-        "The more you answer honestly, the more colorful the color becomes 😚",
-        "Thank you, "
+        "What's your name?",
+        "Hello, ",
+        "I’m a fairy living in your heart 💖",
+        "It's losing its color because it's not emotion raining in our village.",
+        "Can you help me?"
     ]
     
     var body: some View {

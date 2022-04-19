@@ -26,7 +26,7 @@ struct ChangeFeelingDegreeView: View {
                             .padding(.bottom,10)
                 )
                 .foregroundColor(Color.init(red: feelingFoodColor[user.First.emotion][0], green: feelingFoodColor[user.First.emotion][1], blue: feelingFoodColor[user.First.emotion][2],opacity: Double(user.First.emotionOpacity/100)))
-            ContextBoxView(context: "How much do you want to change today’s emotion degree?")
+            ContextBoxView(context: "How much do you want to change today's feelings?")
             Slider(value: $user.First.emotionOpacity, in: 0...100,step: 1.0)
                 .tint(Color.init(red: feelingFoodColor[user.First.emotion][0], green: feelingFoodColor[user.First.emotion][1], blue: feelingFoodColor[user.First.emotion][2],opacity: Double(user.First.emotionOpacity/100)))
                 .padding(.horizontal,150)

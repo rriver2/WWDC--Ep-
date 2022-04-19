@@ -65,7 +65,7 @@ struct ChangeFeelingRecordView: View {
                 }
             }
             Spacer()
-            ContextBoxView(context: "What kind of emotions do you want to change?")
+            ContextBoxView(context: "What kind of emotion do you want your current feelings to turn into?")
 
             NavigationLink(destination: ChangeFeelingRecordDetailFeelingView(user : user), isActive: $isNavigationLinkActive) {
             }.navigationBarItems(trailing:

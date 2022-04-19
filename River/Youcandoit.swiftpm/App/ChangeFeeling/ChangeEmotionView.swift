@@ -49,7 +49,7 @@ struct ChangeEmotionView: View {
                     )
             }
             
-            ContextBoxView(context: "Do you want to change today's emotion?")
+            ContextBoxView(context: "Should I change today's feelings to a different one?")
             
             HStack{
                 
