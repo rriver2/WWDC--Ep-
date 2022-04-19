@@ -9,17 +9,10 @@ import SwiftUI
 
 class User : ObservableObject {
     @Published var name : String = ""
-    @Published var FirstFeeling : Int = 0
+    @Published var FirstFeeling : Int = 0 // "Anger"
+    @Published var FirstFeelingOpacity : Double = 5.0
+    @Published var FirstFeelingfeelingDetailSelectedDic :  [String: Int] = [:] // "upset":3,"furious":6
 }
-
-//struct ChangeView: View {
-//    @EnvironmentObject var user : User
-//
-//    var body: some View{
-//    }
-//}
-
-
 
 struct ContentView: View {
     @ObservedObject var user : User = User()
@@ -32,9 +25,9 @@ struct ContentView: View {
         "What is your name?",
         "hi, ",
         "I'm the heart in you.",
-        "These days, I am losing my color due to the lack of emotional food in my town.",
+        "These days, I am losing my color due to the lack of emotions in my town.",
         "I want you to help me!",
-        "The more I answer honestly, the more colorful the color becomes 😚",
+        "The more you answer honestly, the more colorful the color becomes 😚",
         "Thank you, "
     ]
     
@@ -59,7 +52,7 @@ struct ContentView: View {
                         }){
                             HeartImageView(selecitionContext: $selecitionContext, username: $username)
                         }
-                        NavigationLink( "RecordView", destination: RecordView(), isActive: $isShowRecordView)
+                        NavigationLink( "RecordView", destination: RecordView(user: user), isActive: $isShowRecordView)
                             .hidden()
                     }
                     else{

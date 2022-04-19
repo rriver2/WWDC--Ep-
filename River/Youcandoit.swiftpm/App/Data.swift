@@ -5,29 +5,7 @@ See the License.txt file for this sample’s licensing information.
 import Foundation
 import SwiftUI
 
-var feelingFood = ["Happiness", "Energized", "Comfort", "Boredom", "Depression / Sad", "Anger", "Anxiety /     Fear", "Confusion"]
-
-var feelingDetail : [String:[String]] = [
-    "Anger" : [
-        "upset", "bothersome", "furious", "frustrated", "anxious", "awkward", "irritated", "uncomfortable", "raging", "nervous", "chaotic", "stress"
-    ]
-]
-
-var feelingDetailDictionary : [String:String] = [
-    // Anger
-    "upset" : "to make someone worried, unhappy, or angry",
-    "bothersome" : "annoying or causing trouble",
-    "furious" : "extremely angry",
-    "frustrated" : "feeling annoyed or less confident because you cannot achieve what you want",
-    "anxious" : "worried and nervous",
-    "awkward" : "difficult to use, do, or deal with",
-    "irritated" : "annoyed",
-    "uncomfortable" : "not feeling comfortable and pleasant",
-    "raging" : "very strong or violent",
-    "nervous" : "worried and anxious",
-    "chaotic" : "in a state of total confusion with no order",
-    "stress" : "great worry caused by a difficult situation, or something that causes this condition"
-]
+var feelingFood = ["Happiness", "Energized", "Comfort", "Boredom", "Depression / Sad", "Anger", "Anxiety / heFear", "Confusion"]
 
 var feelingFoodColor : [[Double]] = [
     [249/255, 217/255, 85/255],
@@ -39,3 +17,28 @@ var feelingFoodColor : [[Double]] = [
     [76/255, 88/255, 81/255],
     [159/255, 95/255, 161/255],
 ]
+
+
+struct FeelingDetail {
+    var name : String
+    var meaning : String
+    var count : Int
+}
+
+var Feelings : [String :[FeelingDetail]] = [
+    "Anger" : [
+    FeelingDetail(name: "upset", meaning: "to make someone worried, unhappy, or angry", count: 0),
+    FeelingDetail(name: "bothersome", meaning: "annoying or causing trouble", count: 0),
+    FeelingDetail(name: "furious", meaning: "extremely angry", count: 0),
+    FeelingDetail(name: "frustrated", meaning: "feeling annoyed or less confident because you cannot achieve what you want", count: 0),
+    FeelingDetail(name: "anxious", meaning: "worried and nervous", count: 0),
+    FeelingDetail(name: "awkward", meaning: "difficult to use, do, or deal with", count: 0),
+    FeelingDetail(name: "irritated", meaning: "annoyed", count: 0),
+    FeelingDetail(name: "uncomfortable", meaning: "not feeling comfortable and pleasant", count: 0),
+    FeelingDetail(name: "raging", meaning: "very strong or violent", count: 0),
+    FeelingDetail(name: "nervous", meaning: "worried and anxious", count: 0),
+    FeelingDetail(name: "chaotic", meaning: "in a state of total confusion with no order", count: 0),
+    FeelingDetail(name: "stress", meaning: "great worry caused by a difficult situation, or something that causes this condition", count: 0)
+    ]
+]// Feelings[Anger][]
+

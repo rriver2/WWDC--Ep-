@@ -8,13 +8,10 @@
 import SwiftUI
 
 struct RecordView: View {
-    @State var selectionFeeling = 0
-    @ObservedObject var user : User = User()
     
-    @State private var firstFeeling: String = ""
+    @ObservedObject var user: User
     
     @State var isNavigationLinkActive = false
-    
     
     var body: some View {
         VStack{
@@ -24,7 +21,7 @@ struct RecordView: View {
                 VStack{
                     ForEach([0,1,2,3], id: \.self){ index in
                         Button {
-                            selectionFeeling = index
+                            user.FirstFeeling = index
                         } label: {
                             HStack{
                                 Image(systemName: "heart.fill")
@@ -34,7 +31,7 @@ struct RecordView: View {
                                             .font(.title)
                                             .foregroundColor(Color.black)
                                     )
-                                    .foregroundColor( selectionFeeling == index
+                                    .foregroundColor( user.FirstFeeling == index
                                                       ? Color.init(red: feelingFoodColor[index][0], green: feelingFoodColor[index][1], blue: feelingFoodColor[index][2],opacity: 0.8)
                                                       : Color.init(red: feelingFoodColor[index][0], green: feelingFoodColor[index][1], blue: feelingFoodColor[index][2],opacity: 0.2)
                                     )
@@ -43,11 +40,12 @@ struct RecordView: View {
                         }
                     }
                 }
-                HeartEatingView(selectionFeeling: $selectionFeeling)
+                HeartEatingView(selectionFeeling: $user.FirstFeeling)
+                    .frame(width: 400, height: 400)
                 VStack{
                     ForEach([4,5,6,7], id: \.self){ index in
                         Button {
-                            selectionFeeling = index
+                            user.FirstFeeling = index
                         } label: {
                             HStack{
                                 Image(systemName: "heart.fill")
@@ -57,9 +55,7 @@ struct RecordView: View {
                                             .font(.title)
                                             .foregroundColor(Color.black)
                                     )
-                                //                                    .foregroundColor(Color.init(red: feelingFoodColor[index][0], green: feelingFoodColor[index][1], blue: feelingFoodColor[index][2]))
-                                //                                    .foregroundColor( selectionFeeling == index
-                                    .foregroundColor( selectionFeeling == index
+                                    .foregroundColor( user.FirstFeeling == index
                                                       ? Color.init(red: feelingFoodColor[index][0], green: feelingFoodColor[index][1], blue: feelingFoodColor[index][2],opacity: 0.8)
                                                       : Color.init(red: feelingFoodColor[index][0], green: feelingFoodColor[index][1], blue: feelingFoodColor[index][2],opacity: 0.2)
                                     )
@@ -71,7 +67,7 @@ struct RecordView: View {
             Spacer()
             ContextBoxView(context: "Tell me today’s emotions 😚")
 
-            NavigationLink(destination: RecordDetailFeelingView(), isActive: $isNavigationLinkActive) {
+            NavigationLink(destination: RecordDetailFeelingView(user : user), isActive: $isNavigationLinkActive) {
                 Button(action: {
                     self.isNavigationLinkActive = true
                 }) {
@@ -90,12 +86,12 @@ struct HeartEatingView : View{
     var body : some View{
         Image("feeling\(selectionFeeling)")
             .resizable()
-            .frame(width: 400, height: 400)
     }
 }
-
-struct RecordView_Previews: PreviewProvider {
-    static var previews: some View {
-        RecordView()
-    }
-}
+//
+//struct RecordView_Previews: PreviewProvider {
+//    @ObservedObject var user: User
+//    static var previews: some View {
+//        RecordView(user : user)
+//    }
+//}
