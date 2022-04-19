@@ -1,5 +1,5 @@
 //
-//  EatingView.swift
+//  ChangeFeelingRecordView.swift
 //  WWDC
 //
 //  Created by 이가은 on 2022/04/16.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct RecordView: View {
+struct ChangeFeelingRecordView: View {
     
     @ObservedObject var user: User
     
@@ -21,7 +21,7 @@ struct RecordView: View {
                 VStack{
                     ForEach([0,1,2,3], id: \.self){ index in
                         Button {
-                            user.First.emotion = index
+                            user.Second.emotion = index
                         } label: {
                             HStack{
                                 Image(systemName: "heart.fill")
@@ -31,7 +31,7 @@ struct RecordView: View {
                                             .font(.title)
                                             .foregroundColor(Color.black)
                                     )
-                                    .foregroundColor( user.First.emotion == index
+                                    .foregroundColor( user.Second.emotion == index
                                                       ? Color.init(red: feelingFoodColor[index][0], green: feelingFoodColor[index][1], blue: feelingFoodColor[index][2],opacity: 0.8)
                                                       : Color.init(red: feelingFoodColor[index][0], green: feelingFoodColor[index][1], blue: feelingFoodColor[index][2],opacity: 0.2)
                                     )
@@ -40,12 +40,12 @@ struct RecordView: View {
                         }
                     }
                 }
-                HeartEatingView(selectionFeeling: $user.First.emotion)
+                HeartEatingView(selectionFeeling: $user.Second.emotion)
                     .frame(width: 400, height: 400)
                 VStack{
                     ForEach([4,5,6,7], id: \.self){ index in
                         Button {
-                            user.First.emotion = index
+                            user.Second.emotion = index
                         } label: {
                             HStack{
                                 Image(systemName: "heart.fill")
@@ -55,7 +55,7 @@ struct RecordView: View {
                                             .font(.title)
                                             .foregroundColor(Color.black)
                                     )
-                                    .foregroundColor( user.First.emotion == index
+                                    .foregroundColor( user.Second.emotion == index
                                                       ? Color.init(red: feelingFoodColor[index][0], green: feelingFoodColor[index][1], blue: feelingFoodColor[index][2],opacity: 0.8)
                                                       : Color.init(red: feelingFoodColor[index][0], green: feelingFoodColor[index][1], blue: feelingFoodColor[index][2],opacity: 0.2)
                                     )
@@ -65,9 +65,9 @@ struct RecordView: View {
                 }
             }
             Spacer()
-            ContextBoxView(context: "Tell me today’s emotions 😚")
+            ContextBoxView(context: "What kind of emotions do you want to change?")
 
-            NavigationLink(destination: RecordDetailFeelingView(user : user), isActive: $isNavigationLinkActive) {
+            NavigationLink(destination: ChangeFeelingRecordDetailFeelingView(user : user), isActive: $isNavigationLinkActive) {
             }.navigationBarItems(trailing:
                 Button(action: {
                     self.isNavigationLinkActive = true
@@ -80,18 +80,3 @@ struct RecordView: View {
 }
 
 
-struct HeartEatingView : View{
-    @Binding var selectionFeeling : Int
-    
-    var body : some View{
-        Image("feeling\(selectionFeeling)")
-            .resizable()
-    }
-}
-//
-//struct RecordView_Previews: PreviewProvider {
-//    @ObservedObject var user: User
-//    static var previews: some View {
-//        RecordView(user : user)
-//    }
-//}

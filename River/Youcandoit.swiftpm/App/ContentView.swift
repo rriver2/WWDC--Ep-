@@ -9,9 +9,16 @@ import SwiftUI
 
 class User : ObservableObject {
     @Published var name : String = ""
-    @Published var FirstFeeling : Int = 0 // "Anger"
-    @Published var FirstFeelingOpacity : Double = 5.0
-    @Published var FirstFeelingfeelingDetailSelectedDic :  [String: Int] = [:] // "upset":3,"furious":6
+    
+    struct RecordTime {
+        var emotion : Int
+        var emotionOpacity : Double
+        var emotionDetailSelectedDic : [String: Int]
+    }
+    
+    @Published var First : RecordTime = RecordTime(emotion: 0, emotionOpacity: 5.0, emotionDetailSelectedDic: [:])
+    
+    @Published var Second : RecordTime = RecordTime(emotion: 0, emotionOpacity: 5.0, emotionDetailSelectedDic: [:])
 }
 
 struct ContentView: View {

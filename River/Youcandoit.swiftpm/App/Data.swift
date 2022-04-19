@@ -42,3 +42,16 @@ var Feelings : [String :[FeelingDetail]] = [
     ]
 ]// Feelings[Anger][]
 
+let LastViewContext : [String] = [
+    "Thank you for being honest with me today!",
+    "I hope it was a time to look into your feelings.",
+    "You know all the feelings you’ve given me are precious, right?",
+    "I love all the emotions you've given me and all the emotions you'll feel in the future.",
+    "Don't forget I'm always on your side.",
+    "Much love, your heart."
+]
+
+let ChangeLastViewContext : [String] = [
+    "hiiiii",
+    "Byeeeee"
+]

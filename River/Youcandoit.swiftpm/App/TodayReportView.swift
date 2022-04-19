@@ -9,11 +9,16 @@ import SwiftUI
 
 
 class User1 : ObservableObject {
+    
     @Published var name : String = "Gaeun"
-    @Published var FirstFeeling : Int = 5
-    @Published var FirstFeelingOpacity : Double = 50.0
-    @Published var FirstFeelingfeelingDetailSelectedDic :  [String: Int] =
-    [
+    
+    struct RecordTime {
+        var emotion : Int
+        var emotionOpacity : Double
+        var emotionDetailSelectedDic : [String: Int]
+    }
+    
+    @Published var First : RecordTime = RecordTime(emotion: 5, emotionOpacity: 5.0, emotionDetailSelectedDic: [
         "upset":3,
         "furious":6,
         "anxious":10,
@@ -26,93 +31,68 @@ class User1 : ObservableObject {
         "upset3":3,
         "furiou4s":6,
         "anxious4":10,
-    ]
+    ])
+    
 }
 
 
 struct TodayReportView: View {
     
-        @ObservedObject var user: User
-//    @ObservedObject var user : User1 = User1()
+    @ObservedObject var user: User
+    //    @ObservedObject var user : User1 = User1()
     
-    @State var selecitionContext = 0
+    //    @State var selecitionContext = 0
     
     @State var isNavigationLinkActive = false
     
-    let TodayReportViewContext : [String] = [
-        "Why do you want to keep it?",
-        "What do you do with this feeling?"
-    ]
+    //    let TodayReportViewContext : [String] = [
+    //        "Why do you want to keep it?",
+    //        "What do you do with this feeling?"
+    //    ]
     
-    var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
+//    var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 2)
     
     var body: some View {
-        VStack{
-            HStack{
-                VStack{
-                    Image(systemName: "heart.fill")
-                        .font(.system(size: 150))
-                        .overlay(
-                            Text(feelingFood[user.FirstFeeling])
-                                .font(.system(size: 30, weight: .bold))
-                                .foregroundColor(Color.black)
-                        )
-                        .foregroundColor(Color.init(red: feelingFoodColor[user.FirstFeeling][0], green: feelingFoodColor[user.FirstFeeling][1], blue: feelingFoodColor[user.FirstFeeling][2],opacity: Double(user.FirstFeelingOpacity/100))
-                        )
-                    LazyVGrid(columns: columns, spacing: 20) {
-                        let DetailFeelingArray = user.FirstFeelingfeelingDetailSelectedDic.sorted {
-                            return $0.1 > $1.1
-                        }
-                        ForEach(DetailFeelingArray.indices, id: \.self){ index in
-                            if(index < 8){
-                                Text("\(DetailFeelingArray[index].key): \(DetailFeelingArray[index].value)")
-                                    .frame(width: 150, height: 50)
-                                    .padding(10)
-                                    .background(Color.init(red: feelingFoodColor[user.FirstFeeling][0], green: feelingFoodColor[user.FirstFeeling][1], blue: feelingFoodColor[user.FirstFeeling][2],opacity: 0.2))
-                                    .cornerRadius(20)
+       
+            VStack{
+                HStack{
+                    HeartEatingView(selectionFeeling: $user.First.emotion)
+                        .frame(width: 200, height: 200)
+                        Image(systemName: "heart.fill")
+                            .font(.system(size: 150))
+                            .overlay(
+                                Text(feelingFood[user.First.emotion])
+                                    .font(.system(size: 20, weight: .bold))
+                                    .foregroundColor(Color.black)
+                            )
+                            .foregroundColor(Color.init(red: feelingFoodColor[user.First.emotion][0], green: feelingFoodColor[user.First.emotion][1], blue: feelingFoodColor[user.First.emotion][2],opacity: Double(user.First.emotionOpacity/100))
+                            )
+                        VStack{
+                            let DetailFeelingArray = user.First.emotionDetailSelectedDic.sorted {
+                                return $0.1 > $1.1
+                            }
+                            ForEach(DetailFeelingArray.indices, id: \.self){ index in
+                                if(index < 4){
+                                    Text("\(DetailFeelingArray[index].key): \(DetailFeelingArray[index].value)")
+                                        .frame(width: 150, height: 30)
+                                        .padding(10)
+                                        .background(Color.init(red: feelingFoodColor[user.First.emotion][0], green: feelingFoodColor[user.First.emotion][1], blue: feelingFoodColor[user.First.emotion][2],opacity: 0.2))
+                                        .cornerRadius(20)
                             }
                         }
-                    }//: LazyVGrid
-                }//: VStack
-                Button( action: {
-                    if(selecitionContext < TodayReportViewContext.count-1){
-                        selecitionContext += 1
-                    }
-                }){
-                    HeartEatingView(selectionFeeling: $user.FirstFeeling)
-                        .frame(width: 300, height: 300)
-                        .overlay{
-                            if(selecitionContext == 0){
-                                Image(systemName: "hand.tap")
-                                    .padding(.bottom, 250)
-                                    .padding(.leading, 200)
-                                    .foregroundColor(.gray)
-                                    .font(.system(size: 50))
-                            }
-                        }
+                    }//: VStack
                 }
             }//: HStack
-            ContextBoxView(context: TodayReportViewContext[selecitionContext])
-            if(selecitionContext == TodayReportViewContext.count-1){
-                NavigationLink(destination: LastView(), isActive: $isNavigationLinkActive) {
-                    Button(action: {
-                        self.isNavigationLinkActive = true
-                    }) {
-                        Text("Next")
-                            .font(.system(size: 40))
-                            .padding(.horizontal,30)
-                            .padding(.vertical,20)
-                            .background(Color.init(red: feelingFoodColor[user.FirstFeeling][0], green: feelingFoodColor[user.FirstFeeling][1], blue: feelingFoodColor[user.FirstFeeling][2],opacity: 0.2))
-                            .cornerRadius(20)
-                    }
-                }
-            }
-        }//: VStack
-    }
+            ContextBoxView(context: "What do you do with this feeling?")
+        NavigationLink(destination: ChangeEmotionView(user: user), isActive: $isNavigationLinkActive){
+        }
+        .navigationBarItems(trailing:
+                                Button(action: {
+            self.isNavigationLinkActive = true
+        }){
+            Text("Next")
+        })
+        DrawingHomeView()
+    }//: VStack
 }
-//
-//struct TodayReportView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        TodayReportView()
-//    }
-//}
+

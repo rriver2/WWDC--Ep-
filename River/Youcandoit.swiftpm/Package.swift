@@ -12,7 +12,7 @@ let package = Package(
     platforms: [
         .iOS("15.2")
     ],
-    products: [ 
+    products: [
         .iOSApplication(
             name: "About Me",
             targets: ["App"],
@@ -20,16 +20,14 @@ let package = Package(
             bundleVersion: "1",
             iconAssetName: "AppIcon",
             supportedDeviceFamilies: [
-                .pad, .phone
+                .pad,
+                .phone
             ],
             supportedInterfaceOrientations: [
                 .portrait,
                 .landscapeRight,
                 .landscapeLeft,
                 .portraitUpsideDown(.when(deviceFamilies: [.pad]))
-            ],
-            capabilities: [
-
             ]
         )
     ],
