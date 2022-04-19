@@ -7,22 +7,6 @@
 
 import SwiftUI
 
-struct FeelingFood{
-    
-    var feelingFood = ["Happiness", "Energized", "Comfort", "Boredom", "Depression / Sad", "Anger", "Anxiety /     Fear", "Confusion"]
-    
-    var feelingFoodColor : [[Double]] = [
-        [249/255, 217/255, 85/255],
-        [226/255, 149/255, 76/255],
-        [142/255, 163/255, 141/255],
-        [129/255, 129/255, 129/255],
-        [102/255, 153/255, 200/255],
-        [193/255, 43/255, 31/255],
-        [76/255, 88/255, 81/255],
-        [159/255, 95/255, 161/255],
-    ]
-}
-
 struct RecordView: View {
     @State var selectionFeeling = 0
     @ObservedObject var user : User = User()
@@ -31,7 +15,6 @@ struct RecordView: View {
     
     @State var isNavigationLinkActive = false
     
-    var Food = FeelingFood()
     
     var body: some View {
         VStack{
@@ -47,13 +30,13 @@ struct RecordView: View {
                                 Image(systemName: "heart.fill")
                                     .font(.system(size: 150))
                                     .overlay(
-                                        Text(Food.feelingFood[index])
+                                        Text(feelingFood[index])
                                             .font(.title)
                                             .foregroundColor(Color.black)
                                     )
                                     .foregroundColor( selectionFeeling == index
-                                                      ? Color.init(red: Food.feelingFoodColor[index][0], green: Food.feelingFoodColor[index][1], blue: Food.feelingFoodColor[index][2],opacity: 0.8)
-                                                      : Color.init(red: Food.feelingFoodColor[index][0], green: Food.feelingFoodColor[index][1], blue: Food.feelingFoodColor[index][2],opacity: 0.2)
+                                                      ? Color.init(red: feelingFoodColor[index][0], green: feelingFoodColor[index][1], blue: feelingFoodColor[index][2],opacity: 0.8)
+                                                      : Color.init(red: feelingFoodColor[index][0], green: feelingFoodColor[index][1], blue: feelingFoodColor[index][2],opacity: 0.2)
                                     )
                                 
                             }
@@ -70,15 +53,15 @@ struct RecordView: View {
                                 Image(systemName: "heart.fill")
                                     .font(.system(size: 150))
                                     .overlay(
-                                        Text(Food.feelingFood[index])
+                                        Text(feelingFood[index])
                                             .font(.title)
                                             .foregroundColor(Color.black)
                                     )
-                                //                                    .foregroundColor(Color.init(red: Food.feelingFoodColor[index][0], green: Food.feelingFoodColor[index][1], blue: Food.feelingFoodColor[index][2]))
+                                //                                    .foregroundColor(Color.init(red: feelingFoodColor[index][0], green: feelingFoodColor[index][1], blue: feelingFoodColor[index][2]))
                                 //                                    .foregroundColor( selectionFeeling == index
                                     .foregroundColor( selectionFeeling == index
-                                                      ? Color.init(red: Food.feelingFoodColor[index][0], green: Food.feelingFoodColor[index][1], blue: Food.feelingFoodColor[index][2],opacity: 0.8)
-                                                      : Color.init(red: Food.feelingFoodColor[index][0], green: Food.feelingFoodColor[index][1], blue: Food.feelingFoodColor[index][2],opacity: 0.2)
+                                                      ? Color.init(red: feelingFoodColor[index][0], green: feelingFoodColor[index][1], blue: feelingFoodColor[index][2],opacity: 0.8)
+                                                      : Color.init(red: feelingFoodColor[index][0], green: feelingFoodColor[index][1], blue: feelingFoodColor[index][2],opacity: 0.2)
                                     )
                             }
                         }

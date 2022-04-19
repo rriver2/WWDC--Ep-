@@ -5,31 +5,37 @@ See the License.txt file for this sample’s licensing information.
 import Foundation
 import SwiftUI
 
-struct Info {
-    let image: String
-    let name: String
-    let story: String
-    let hobbies: [String]
-    let foods: [String]
-    let colors: [Color]
-    let funFacts: [String]
-}
+var feelingFood = ["Happiness", "Energized", "Comfort", "Boredom", "Depression / Sad", "Anger", "Anxiety /     Fear", "Confusion"]
 
-let information = Info(
-    image: "Placeholder",
-    name: "My Name",
-    story: "A story can be about anything you can dream up. There are no right answers, there is no one else.\n\nNeed some inspiration?\n• 🐶🐱🛶️🎭🎤🎧🎸\n• 🏄‍♀️🚵‍♀️🚴‍♀️⛵️🥾🏂⛷📚\n• ✍️🥖☕️🏋️‍♂️🚲🧗‍♀️ ",
-    hobbies: ["bicycle", "ticket.fill", "book.fill"],
-    foods: ["🥐", "🌮", "🍣"],
-    colors: [Color.blue, Color.purple, Color.pink],
-    funFacts: [
-        "The femur is the longest and largest bone in the human body.",
-        "The moon is 238,900 miles away.",
-        "Prince’s last name was Nelson.",
-        "503 new species were discovered in 2020.",
-        "Ice is 9 percent less dense than liquid water.",
-        "You can spell every number up to 1,000 without using the letter A.\n\n...one, two, three, four...ninety-nine...nine hundred ninety-nine 🧐",
-        "A collection of hippos is called a bloat.",
-        "White sand beaches are made of parrotfish poop.",
+var feelingDetail : [String:[String]] = [
+    "Anger" : [
+        "upset", "bothersome", "furious", "frustrated", "anxious", "awkward", "irritated", "uncomfortable", "raging", "nervous", "chaotic", "stress"
     ]
-)
+]
+
+var feelingDetailDictionary : [String:String] = [
+    // Anger
+    "upset" : "to make someone worried, unhappy, or angry",
+    "bothersome" : "annoying or causing trouble",
+    "furious" : "extremely angry",
+    "frustrated" : "feeling annoyed or less confident because you cannot achieve what you want",
+    "anxious" : "worried and nervous",
+    "awkward" : "difficult to use, do, or deal with",
+    "irritated" : "annoyed",
+    "uncomfortable" : "not feeling comfortable and pleasant",
+    "raging" : "very strong or violent",
+    "nervous" : "worried and anxious",
+    "chaotic" : "in a state of total confusion with no order",
+    "stress" : "great worry caused by a difficult situation, or something that causes this condition"
+]
+
+var feelingFoodColor : [[Double]] = [
+    [249/255, 217/255, 85/255],
+    [226/255, 149/255, 76/255],
+    [142/255, 163/255, 141/255],
+    [129/255, 129/255, 129/255],
+    [102/255, 153/255, 200/255],
+    [193/255, 43/255, 31/255],
+    [76/255, 88/255, 81/255],
+    [159/255, 95/255, 161/255],
+]

@@ -13,65 +13,67 @@ struct RecordDetailFeelingView: View {
     
     var selectionFeeling : Int = 5
     
-    var Food = FeelingFood()
-    
-    
     var columns: [GridItem] = Array(repeating: .init(.flexible()), count: 3)
     
-    @State private var feelingAmount = Array(repeating: 0, count: 4)
+    
+    //feelingDetail[feelingFood[selectionFeeling]].count
+    //   @Binding var feelingAmount : [Int]
+    @State private var feelingAmount = Array(repeating: 0, count: 13)
+    
+    
+    //   @Binding var feelingDetailMeaning : String = feelingDetailDictionary[feelingDetail[feelingFood[selectionFeeling]]![0]]!
+    @State private var feelingDetailMeaning : String = feelingDetailDictionary[feelingDetail[feelingFood[5]]![0]]!
+//    feelingFood[5][0]
+    
+    //   @Binding var feelingDetailMeaning : String = feelingFood[selectionFeeling][0]
+    @State private var feelingDetailSelected : String = feelingDetail[feelingFood[5]]![0]
     
     @State private var heartOpacity : Double = 5
-    
-    func incrementStep() {
-        heartOpacity += 5
-    }
-    
-    func decrementStep() {
-        heartOpacity -= 5
-    }
     
     var body: some View {
         
         Image(systemName: "heart.fill")
             .font(.system(size: 400))
             .overlay(
-                Text(Food.feelingFood[selectionFeeling])
-                    .font(.title)
-                    .foregroundColor(Color.black)
+                VStack{
+                    Text(feelingFood[selectionFeeling])
+                        .font(.title)
+                        .foregroundColor(Color.black)
+                    Text(feelingDetailSelected)
+                        .font(.title2)
+                        .foregroundColor(Color.black)
+                    Text(feelingDetailMeaning)
+                        .foregroundColor(Color.black)
+                }
             )
-            .foregroundColor(Color.init(red: Food.feelingFoodColor[selectionFeeling][0], green: Food.feelingFoodColor[selectionFeeling][1], blue: Food.feelingFoodColor[selectionFeeling][2],opacity: Double(heartOpacity/100)))
+            .foregroundColor(Color.init(red: feelingFoodColor[selectionFeeling][0], green: feelingFoodColor[selectionFeeling][1], blue: feelingFoodColor[selectionFeeling][2],opacity: Double(heartOpacity/100)))
+        if(heartOpacity == 5){
+            ContextBoxView(context: "Tell me more about it !")
+        }else{
+            ContextBoxView(context: "The more detailed it is, the better 🎨")
+        }
         
-        ContextBoxView(context: "Tell me more about it !")
         LazyVGrid(columns: columns, spacing: 20) {
-            
-            Stepper(value: $feelingAmount[0], in: 0...100, step: 10) {
-                Text("mad : \(feelingAmount[0])")
-            }.padding(.horizontal, 10)
-            Stepper(value: $feelingAmount[1], in: 0...100, step: 10) {
-                Text("bothersome : \(feelingAmount[1])")
-            }.padding(.horizontal, 10)
-            Stepper(value: $feelingAmount[2], in: 0...100, step: 10) {
-                Text("furious : \(feelingAmount[2])")
-            }.padding(.horizontal, 10)
-            
-            
-//            Stepper(onIncrement: incrementStep,
-//                    onDecrement: decrementStep) {
-//                Text("2ㅇㅇㅇ : \(feelingAmount[2])")
-//            }.padding(.horizontal, 10)
-//
-//            Stepper(onIncrement: {
-//                print("Stepper onIncrement")
-//                    heartOpacity += 5
-//                self.feelingAmount[4] += 1
-//            }, onDecrement: {
-//                print("Stepper onDecrement")
-//                    heartOpacity -= 5
-//                self.feelingAmount[4] -= 1
-//            }) {
-//                Text("Stepper value: \(self.feelingAmount[4])")
-//            }
-            
+            ForEach(feelingDetail[feelingFood[selectionFeeling]]!.indices, id: \.self){ index in
+                
+                let currentFeeling = feelingDetail[feelingFood[selectionFeeling]]
+                
+                Stepper(onIncrement: {
+                    print("Stepper onIncrement")
+                    heartOpacity += 5
+                    self.feelingAmount[index] += 1
+                    self.feelingDetailMeaning = feelingDetailDictionary[currentFeeling![index]]!
+                    self.feelingDetailSelected = currentFeeling![index]
+                }, onDecrement: {
+                    print("Stepper onDecrement")
+                    heartOpacity -= 5
+                    self.feelingAmount[index] -= 1
+                    self.feelingDetailMeaning = feelingDetailDictionary[currentFeeling![index]]!
+                    self.feelingDetailSelected = currentFeeling![index]
+                }) {
+                    Text("\(currentFeeling![index]): \(self.feelingAmount[index])")
+                }.padding(.horizontal, 10)
+            }
         }
     }
 }
