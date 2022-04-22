@@ -6,12 +6,14 @@
 //
 
 import SwiftUI
-
+import AVKit
 
 struct BordomView: View {
     
     @State var currentDate = Date()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
+    
+    @State var audio : AVAudioPlayer!
     
     @State var astronautPosition : CGSize = CGSize(width: .random(in: 500...1500),height: .random (in: 500...1500))
     
@@ -21,18 +23,31 @@ struct BordomView: View {
     
     @State var duration : Double = 30.0
     
+    func gerTime(currentDate : Date)->String{
+    let formatter = DateFormatter()
+    formatter.dateFormat = "yyyy'-'MM'-'dd' 'HH':'mm':'ss'"
+        return formatter.string(from: currentDate)
+    }
+    
     var body: some View {
         
         ZStack{
-            Image("space")
-                .resizable()
-                .rotationEffect(.degrees(rotation))
-                .frame(width: UIScreen.main.bounds.height * 1.5, height: UIScreen.main.bounds.height * 1.5)
+            
+            Rectangle()
+                .overlay(
+                    Image("space")
+                        .resizable()
+                        .rotationEffect(.degrees(rotation))
+                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 1.5)
+                        .mask(
+                            Rectangle().frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
+                        )
+                )
             
             Image("astronaut")
                 .resizable()
                 .frame(width: 250, height: 250)
-                .opacity(0.3)
+                .opacity(0.5)
                 .position(CGPoint(x: self.astronautPosition.width ,y:  self.astronautPosition.height))
                 .onReceive(timer){ input in
                     withAnimation(Animation.easeInOut(duration: self.duration)
@@ -41,21 +56,27 @@ struct BordomView: View {
                         self.astronautPosition = CGSize(width: .random(in: 500...1500),height: .random (in: 500...1500))
                         self.rotation = .random(in: 0...100)
                     }
-                }        }
+                }
+        }
         .overlay(
             VStack{
                 Text("Bordom").foregroundColor(Color.white)
-                    .font(.title)
-                Text("\(currentDate)")
+                    .font(.system(size: 50))
+                Text("\(gerTime(currentDate: currentDate))")
                     .onReceive(timer) { input in
                         currentDate = input
                     }
-                    .font(.title2)
+                    .font(.system(size: 25))
                     .foregroundColor(Color.white)
                     .opacity(0.8)
-                    .padding(.top,10)
+                    .padding(.top, 5)
             }
         )
+        .onAppear{
+            let song = NSDataAsset (name: "BordomMusic")
+            self.audio = try! AVAudioPlayer(data: song!.data, fileTypeHint: "mp3")
+            self.audio.play()
+        }
         .ignoresSafeArea(.all, edges: [.bottom,.top])
     }
 }

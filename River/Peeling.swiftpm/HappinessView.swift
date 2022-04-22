@@ -9,7 +9,8 @@ import AVKit
 
 struct HappinessView: View {
     @State var scale : CGFloat = 0.5
-    @State var offset : CGSize = CGSize(width: .random(in: 20...100), height: .random(in: 20...100))
+    @State var audio : AVAudioPlayer!
+//    @State var offset : CGSize = CGSize(width: .random(in: 20...100), height: .random(in: 20...100))
     
     var body: some View {
         
@@ -20,28 +21,26 @@ struct HappinessView: View {
                     .opacity(0.3)
                     .animation (Animation.spring (dampingFraction: 0.3)
                         .repeatForever()
-                        .speed (.random(in: 0.1...0.4))
-                        .delay(.random (in: 0...0.5)), value: scale
+                        .speed (.random(in: 0.5...1.0))
+                        .delay(.random (in: 0...1)), value: scale
                     )
                     .scaleEffect(self.scale * .random(in: 1...3))
                     .frame(width: .random(in: 1...100),
                            height: CGFloat.random (in:20...100),
                            alignment: .center)
                     .position(CGPoint(x: .random(in: 0...UIScreen.main.bounds.width),y: .random (in:0...UIScreen.main.bounds.height)))
-                    .offset(x: offset.width, y: offset.height)
-                    .gesture(DragGesture()
-                        .onChanged { value in
-                            self.offset = value.translation
-                        })
             }
         }
         .onAppear {
             self.scale = 1.5
+                    let song = NSDataAsset (name: "happyMusic")
+                    self.audio = try! AVAudioPlayer(data: song!.data, fileTypeHint: "mp3")
+                    self.audio.play()
         }
         .background(Color.white)
         .overlay(
             Text("Happiness")
-                .font(.title)
+                .font(.system(size: 40))
         )
         .ignoresSafeArea(.all, edges: [.bottom,.top])
     }

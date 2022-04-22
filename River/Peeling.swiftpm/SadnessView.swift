@@ -6,6 +6,7 @@
 //
 import SwiftUI
 import PencilKit
+import AVKit
 
 struct SadnessView : View {
     
@@ -14,6 +15,7 @@ struct SadnessView : View {
     @State var color : Color = .white
     @State var type : PKInkingTool.InkType = .pen
     @State var isViewExplanation = false
+    @State var audio : AVAudioPlayer!
     
     var body: some View{
         VStack{
@@ -30,9 +32,12 @@ struct SadnessView : View {
                     Button(action:{
                         isDraw = false
                     }, label: {
-                        Image(systemName: "trash")
-                            .font(.system(size: 40))
-                            .foregroundColor(Color.white)
+                        ZStack{
+                            Image(systemName: "rectangle.portrait")
+                                .font(.system(size: 30, weight: .bold))
+                        }
+                        
+                        .foregroundColor(Color.white)
                     })
                     // 펜
                     Button(action: {
@@ -52,14 +57,22 @@ struct SadnessView : View {
                             .font(.system(size: 40))
                             .foregroundColor(Color.white)
                     }
+                    Button(action: {
+                        
+                    }){
+                        Image(systemName: "trash")
+                            .font(.system(size: 40))
+                            .foregroundColor(Color.white)
+                    }
                 }
+                .padding(.top, 100)
                 SadnessDrawingView(canvas: $canvas, isDraw: $isDraw, type: $type, color: $color)
             }
             .background(Color.black)
             .overlay(
                 VStack{
                     Text("Sadness ")
-                        .font(.title)
+                        .font(.system(size: 40))
                         .opacity(isViewExplanation ? 0.2 : 1.0)
                         .animation(Animation.easeOut, value: isViewExplanation)
                     Text("Draw Any thing...")
@@ -72,6 +85,9 @@ struct SadnessView : View {
             )
             .ignoresSafeArea(.all, edges: [.bottom,.top])
         }.onAppear{
+            let song = NSDataAsset (name: "sadMusic")
+            self.audio = try! AVAudioPlayer(data: song!.data, fileTypeHint: "mp3")
+            self.audio.play()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2){
                 self.isViewExplanation = true
             }
@@ -96,9 +112,7 @@ struct SadnessDrawingView : UIViewRepresentable{
     
     func makeUIView(context: Context) -> PKCanvasView {
         canvas.drawingPolicy = .anyInput
-        
         canvas.tool = isDraw ? ink : eraser
-        
         canvas.backgroundColor = UIColor(.black)
         
         return canvas
