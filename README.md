@@ -1,7 +1,9 @@
 
 
 # WWDC/ App, "Ep"
+![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/82457928/164973528-5f111b0a-c1ba-4d33-89b4-87611bb925a6.gif)
 
+## :pushpin: Features
 ### "E"motion "P"icture
 Human emotions are similar to each other but exist abstractly in different meanings.
 Some emotions fall from the sky like rain, and some emotions erupt from deep inside and some emotions bloom in the heart.
@@ -14,6 +16,9 @@ It's a shame that it seems to express only a part of the meaning of each emotion
 YouTube URL:
 
 -------
+
+## :framed_picture: Demo
+
 ### Happy
 I wanted to express that happy comes to life every moment in a different shape.
 Through the animation of SWiftUI, various bubbles were implemented to appear randomly.  
@@ -57,7 +62,7 @@ So, I composed a sadness screen thinking of those who had time alone and comfort
 ![sad](https://user-images.githubusercontent.com/82457928/164972918-aff75232-30a8-4334-a8e2-390a7e80c34d.gif)
 
 -------
-## License
+## :lock_with_ink_pen: License
 
 ### Picture
 All images used in this app are downloaded from Pixabay and do not require author display.
