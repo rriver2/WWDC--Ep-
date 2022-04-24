@@ -1,6 +1,6 @@
 //
 //  SadView.swift
-//  Peeling
+//  EP
 //
 //  Created by 이가은 on 2022/04/20.
 //

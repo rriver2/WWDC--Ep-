@@ -25,7 +25,6 @@ struct ContentView: View {
                                     .overlay(
                                         Button(action: {
                                             self.isNavigationActive = true
-                                            print(isNavigationActive)
                                             openViewName = FeelingCard[index]
                                         }){
                                             VStack{

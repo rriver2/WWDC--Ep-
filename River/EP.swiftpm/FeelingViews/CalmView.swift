@@ -1,6 +1,6 @@
 //
 //  CalmView.swift
-//  Peeling
+//  EP
 //
 //  Created by 이가은 on 2022/04/20.
 //
@@ -61,7 +61,7 @@ struct CalmView: View {
                 }.frame(width: 500, height: 500)
             }
         )
-        .frame(maxWidth: .infinity, maxHeight: .infinity) // 1
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .accentColor(Color.black)
         .background(Color.init(red: 78/255, green: 157/255, blue: 202/255))
         .ignoresSafeArea(.all, edges: [.bottom,.top])
@@ -82,7 +82,6 @@ struct CalmView: View {
 struct CalmView_Previews: PreviewProvider {
     static var previews: some View {
         CalmView()
-        //.preferredColorScheme(.dark)
     }
 }
 

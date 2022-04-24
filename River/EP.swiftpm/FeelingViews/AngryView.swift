@@ -1,6 +1,6 @@
 //
 //  AngryView.swift
-//  Peeling
+//  EP
 //
 //  Created by 이가은 on 2022/04/20.
 //
@@ -56,7 +56,7 @@ struct AngryView: View {
                 }
             }
         )
-        .frame(maxWidth: .infinity, maxHeight: .infinity) // 1
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
         .accentColor(Color.black)
         .background(Color.white)
         .ignoresSafeArea(.all, edges: [.bottom,.top])
@@ -117,6 +117,5 @@ struct AngryView: View {
 struct AngryView_Previews: PreviewProvider {
     static var previews: some View {
         AngryView()
-        //.preferredColorScheme(.dark)
     }
 }

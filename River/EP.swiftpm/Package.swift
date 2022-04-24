@@ -8,13 +8,13 @@ import PackageDescription
 import AppleProductTypes
 
 let package = Package(
-    name: "Peeling",
+    name: "EP",
     platforms: [
         .iOS("15.2")
     ],
     products: [
         .iOSApplication(
-            name: "Peeling",
+            name: "EP",
             targets: ["AppModule"],
             bundleIdentifier: "Rivery.Peeling",
             displayVersion: "1.0",
