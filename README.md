@@ -1,7 +1,8 @@
 # WWDC
 
-##Epi App
+## App, "Ep"
 
+### Emotion Picture(episode)
 Human emotions are similar to each other but exist abstractly in different meanings.
 Some emotions fall from the sky like rain, and some emotions erupt from deep inside and some emotions bloom in the heart.
 However, emotions are trapped in a space called "words" and delivered to others.
