@@ -66,7 +66,7 @@ struct CalmView: View {
         .background(Color.init(red: 78/255, green: 157/255, blue: 202/255))
         .ignoresSafeArea(.all, edges: [.bottom,.top])
         .onAppear {
-            let song = NSDataAsset (name: "ssasd")
+            let song = NSDataAsset (name: "calmMusic")
             self.audio = try! AVAudioPlayer(data: song!.data, fileTypeHint: "mp3")
             self.audio.play()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2){

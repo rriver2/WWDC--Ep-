@@ -18,6 +18,7 @@ struct AngryView: View {
     @State var textColor : Color = Color.black
     @State var isViewExplanation = true
     
+    
     var body: some View{
         
         ZStack{
@@ -40,6 +41,19 @@ struct AngryView: View {
                     .padding(.top,5)
                     .opacity(isViewExplanation ? 0.8 : 0)
                     .animation(Animation.easeOut, value: isViewExplanation)
+                
+                if(self.height > 9){
+                    Button( action: {
+                        self.height = 1.0
+                        isViewExplanation = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 2){
+                            self.isViewExplanation = false
+                        }
+                    }){
+                        Image(systemName: "goforward")
+                            .foregroundColor(.white)
+                    }
+                }
             }
         )
         .frame(maxWidth: .infinity, maxHeight: .infinity) // 1
@@ -49,7 +63,9 @@ struct AngryView: View {
         .gesture(DragGesture()
             .onChanged({_ in
                 if(self.height < 1.3){
+                    self.color = Color.init(red: 234/255, green: 51/255, blue: 35/255)
                     self.height += 0.002
+                    self.textColor = Color.black
                 }else if(self.height < 1.8){
                     self.color = Color.init(red: 220/255, green: 47/255, blue: 32/255)
                     self.height += 0.003
