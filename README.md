@@ -15,9 +15,11 @@ YouTube URL:
 
 -------
 ### Happy
-<p>I wanted to express that happy comes to life every moment in a different shape.
-Through the animation of SWiftUI, various bubbles were implemented to appear randomly.
-<a href="url"><img src="https://user-images.githubusercontent.com/82457928/164972039-5c5042e3-6916-49b3-a707-52d4090db2c7.gif" align="left"  ></a></p>
+|
+I wanted to express that happy comes to life every moment in a different shape.
+Through the animation of SWiftUI, various bubbles were implemented to appear randomly.|
+<a href="url"><img src="https://user-images.githubusercontent.com/82457928/164972039-5c5042e3-6916-49b3-a707-52d4090db2c7.gif" align="left"  ></a>|
+
   
     
       
