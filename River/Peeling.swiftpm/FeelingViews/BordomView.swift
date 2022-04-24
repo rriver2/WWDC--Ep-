@@ -15,7 +15,7 @@ struct BordomView: View {
     
     @State var audio : AVAudioPlayer!
     
-    @State var astronautPosition : CGSize = CGSize(width: .random(in: 500...1500),height: .random (in: 500...1500))
+    @State var astronautPosition : CGSize = CGSize(width: .random(in: 500...1300),height: .random (in: 500...1300))
     
     @State var rotation : Double = 0.0
     
@@ -32,13 +32,12 @@ struct BordomView: View {
     var body: some View {
         
         ZStack{
-            
-            Rectangle()
+            VStack{}
                 .overlay(
                     Image("space")
                         .resizable()
                         .rotationEffect(.degrees(rotation))
-                        .frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height * 1.5)
+                        .frame(width: UIScreen.main.bounds.height * 1.5, height: UIScreen.main.bounds.height * 1.5)
                         .mask(
                             Rectangle().frame(width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height)
                         )
@@ -53,7 +52,7 @@ struct BordomView: View {
                     withAnimation(Animation.easeInOut(duration: self.duration)
                         .repeatForever(autoreverses: true)
                     ) {
-                        self.astronautPosition = CGSize(width: .random(in: 500...1500),height: .random (in: 500...1500))
+                        self.astronautPosition = CGSize(width: .random(in: 500...1300),height: .random (in: 500...1300))
                         self.rotation = .random(in: 0...100)
                     }
                 }
@@ -61,7 +60,7 @@ struct BordomView: View {
         .overlay(
             VStack{
                 Text("Bordom").foregroundColor(Color.white)
-                    .font(.system(size: 50))
+                    .font(.custom("AvenirNextCondensed-Regular", size: 40))
                 Text("\(gerTime(currentDate: currentDate))")
                     .onReceive(timer) { input in
                         currentDate = input

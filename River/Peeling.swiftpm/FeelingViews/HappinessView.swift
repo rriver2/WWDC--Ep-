@@ -40,14 +40,14 @@ struct HappinessView: View {
         .background(Color.white)
         .overlay(
             Text("Happiness")
-                .font(.system(size: 40))
+                .font(.custom("AvenirNextCondensed-Regular", size: 40))
         )
         .ignoresSafeArea(.all, edges: [.bottom,.top])
     }
 }
 
-struct HappinessView_Previews: PreviewProvider {
-    static var previews: some View {
-        HappinessView()
-    }
-}
+//struct HappinessView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HappinessView()
+//    }
+//}

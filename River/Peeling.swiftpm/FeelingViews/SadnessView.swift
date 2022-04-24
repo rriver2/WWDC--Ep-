@@ -14,71 +14,76 @@ struct SadnessView : View {
     @State var isDraw = true
     @State var color : Color = .white
     @State var type : PKInkingTool.InkType = .pen
-    @State var isViewExplanation = false
+    @State var isViewExplanation = true
     @State var audio : AVAudioPlayer!
     
     var body: some View{
         VStack{
-            VStack{
-                HStack{
+            ZStack{
+                SadnessDrawingView(canvas: $canvas, isDraw: $isDraw, type: $type, color: $color)
+                VStack{
                     // 색 변경
                     ColorPicker("", selection: $color)
-                        .padding(.trailing, 10.0)
-                        .frame(height: 20.0)
                         .onChange(of: color) { newValue in
                             isDraw = true
                         }
-                    // 지우개
-                    Button(action:{
-                        isDraw = false
-                    }, label: {
-                        ZStack{
-                            Image(systemName: "rectangle.portrait")
-                                .font(.system(size: 30, weight: .bold))
+                        .padding(.trailing, 5)
+                        .padding(.bottom, 5)
+                    
+                    HStack{
+                        Spacer()
+                        // 펜
+                        Button(action: {
+                            isDraw = true
+                            type = .pen
+                        }){
+                            Image(systemName: "scribble")
+                                .font(.system(size: 40))
+                                .foregroundColor(Color.white)
                         }
-                        
-                        .foregroundColor(Color.white)
-                    })
-                    // 펜
-                    Button(action: {
-                        isDraw = true
-                        type = .pen
-                    }){
-                        Image(systemName: "scribble")
-                            .font(.system(size: 40))
-                            .foregroundColor(Color.white)
                     }
+                    .padding(.bottom, 5)
                     // 하이라이터
-                    Button(action: {
-                        isDraw = true
-                        type = .marker
-                    }){
-                        Image(systemName: "scribble.variable")
-                            .font(.system(size: 40))
-                            .foregroundColor(Color.white)
+                    HStack{
+                        Spacer()
+                        Button(action: {
+                            isDraw = true
+                            type = .marker
+                        }){
+                            Image(systemName: "scribble.variable")
+                                .font(.system(size: 40))
+                                .foregroundColor(Color.white)
+                        }
                     }
-                    Button(action: {
-                        
-                    }){
-                        Image(systemName: "trash")
-                            .font(.system(size: 40))
-                            .foregroundColor(Color.white)
+                    .padding(.bottom, 5)
+                    // 지우개
+                    HStack{
+                        Spacer()
+                        Button(action:{
+                            isDraw = false
+                        }, label: {
+                            Image(systemName: "rectangle.portrait")
+                                .font(.system(size: 40, weight: .bold))
+                                .foregroundColor(Color.white)
+                        })
                     }
+                    .padding(.bottom, 5)
+                    Spacer()
                 }
                 .padding(.top, 100)
-                SadnessDrawingView(canvas: $canvas, isDraw: $isDraw, type: $type, color: $color)
+                
             }
             .background(Color.black)
             .overlay(
                 VStack{
                     Text("Sadness ")
-                        .font(.system(size: 40))
-                        .opacity(isViewExplanation ? 0.2 : 1.0)
+                        .font(.custom("AvenirNextCondensed-Regular", size: 40))
+                        .opacity(isViewExplanation ? 1.0 : 0.2)
                         .animation(Animation.easeOut, value: isViewExplanation)
                     Text("Draw Any thing...")
                         .font(.body)
                         .padding(.top,5)
-                        .opacity(isViewExplanation ? 0 : 0.8)
+                        .opacity(isViewExplanation ? 0.8 : 0)
                         .animation(Animation.easeOut, value: isViewExplanation)
                 }
                     .foregroundColor(Color.white)
@@ -89,7 +94,7 @@ struct SadnessView : View {
             self.audio = try! AVAudioPlayer(data: song!.data, fileTypeHint: "mp3")
             self.audio.play()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-                self.isViewExplanation = true
+                self.isViewExplanation = false
             }
         }
     }

@@ -16,7 +16,7 @@ struct AngerView: View {
     @State var audio : AVAudioPlayer!
     @State var color : Color = Color.init(red: 234/255, green: 51/255, blue: 35/255)
     @State var textColor : Color = Color.black
-    @State var isViewExplanation = false
+    @State var isViewExplanation = true
     
     var body: some View{
         
@@ -32,13 +32,13 @@ struct AngerView: View {
             .overlay(
                 VStack{
                 Text("Anger")
-                    .font(.system(size: 40))
+                    .font(.custom("AvenirNextCondensed-Regular", size: 40))
                     .padding(.top,30)
                     .foregroundColor(textColor)
                 Text("Drag the screen...")
                     .font(.body)
                     .padding(.top,5)
-                    .opacity(isViewExplanation ? 0 : 0.8)
+                    .opacity(isViewExplanation ? 0.8 : 0)
                     .animation(Animation.easeOut, value: isViewExplanation)
                 }
             )
@@ -55,9 +55,9 @@ struct AngerView: View {
                         self.height += 0.003
                     }else if(self.height < 2){
                         self.color = Color.init(red: 204/255, green: 43/255, blue: 29/255)
-                        self.textColor = Color.white
                         self.height += 0.004
                     }else if(self.height < 2.2){
+                        self.textColor = Color.white
                         self.color = Color.init(red: 191/255, green: 39/255, blue: 27/255)
                         self.height += 0.008
                     }else if(self.height < 2.5){
@@ -82,8 +82,10 @@ struct AngerView: View {
                     }else if(self.height < 100){
                         self.height += 0.5
                     }else{
-                        self.textColor = Color.black
-                        self.height = 1.0
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3){
+                            self.textColor = Color.black
+                            self.height = 1.0
+                        }
                     }
                 })
             )
@@ -92,7 +94,7 @@ struct AngerView: View {
                 self.audio = try! AVAudioPlayer(data: song!.data, fileTypeHint: "mp3")
                 self.audio.play()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 2){
-                    self.isViewExplanation = true
+                    self.isViewExplanation = false
                 }
             }
     }
