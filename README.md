@@ -4,7 +4,7 @@
 ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/82457928/164973528-5f111b0a-c1ba-4d33-89b4-87611bb925a6.gif)
 
 ## :pushpin: Features
-### "E"motion "P"icture
+### "E"motion "P"oint
 Human emotions are similar to each other but exist abstractly in different meanings.
 Some emotions fall from the sky like rain, and some emotions erupt from deep inside and some emotions bloom in the heart.
 However, emotions are trapped in a space called "words" and delivered to others.
