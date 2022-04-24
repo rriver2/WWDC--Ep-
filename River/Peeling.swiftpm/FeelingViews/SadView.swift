@@ -1,14 +1,15 @@
 //
-//  DrawingView.swift
+//  SadView.swift
 //  Peeling
 //
 //  Created by 이가은 on 2022/04/20.
 //
+
 import SwiftUI
 import PencilKit
-import AVKit
+import AVFoundation
 
-struct SadnessView : View {
+struct SadView : View {
     
     @State var canvas = PKCanvasView()
     @State var isDraw = true
@@ -20,7 +21,7 @@ struct SadnessView : View {
     var body: some View{
         VStack{
             ZStack{
-                SadnessDrawingView(canvas: $canvas, isDraw: $isDraw, type: $type, color: $color)
+                SadDrawingView(canvas: $canvas, isDraw: $isDraw, type: $type, color: $color)
                 VStack{
                     // 색 변경
                     ColorPicker("", selection: $color)
@@ -55,7 +56,7 @@ struct SadnessView : View {
                                 .foregroundColor(Color.white)
                         }
                     }
-                    .padding(.bottom, 5)
+                    .padding(.bottom, 10)
                     // 지우개
                     HStack{
                         Spacer()
@@ -65,6 +66,12 @@ struct SadnessView : View {
                             Image(systemName: "rectangle.portrait")
                                 .font(.system(size: 40, weight: .bold))
                                 .foregroundColor(Color.white)
+                                .overlay(
+                                    Image(systemName: "rectangle.roundedtop.fill")
+                                        .font(.system(size: 28, weight: .bold))
+                                        .foregroundColor(Color.white)
+                                        .padding(.bottom, 30)
+                                )
                         })
                     }
                     .padding(.bottom, 5)
@@ -76,7 +83,7 @@ struct SadnessView : View {
             .background(Color.black)
             .overlay(
                 VStack{
-                    Text("Sadness ")
+                    Text("Sad")
                         .font(.custom("AvenirNextCondensed-Regular", size: 40))
                         .opacity(isViewExplanation ? 1.0 : 0.2)
                         .animation(Animation.easeOut, value: isViewExplanation)
@@ -97,10 +104,13 @@ struct SadnessView : View {
                 self.isViewExplanation = false
             }
         }
+        .onDisappear {
+            self.audio.stop()
+        }
     }
 }
 
-struct SadnessDrawingView : UIViewRepresentable{
+struct SadDrawingView : UIViewRepresentable{
     
     //앨범에 그린거 캡쳐해서 저장하기 위함
     @Binding var canvas : PKCanvasView

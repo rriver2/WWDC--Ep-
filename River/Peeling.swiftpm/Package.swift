@@ -30,9 +30,6 @@ let package = Package(
                 .landscapeRight,
                 .landscapeLeft,
                 .portraitUpsideDown(.when(deviceFamilies: [.pad]))
-            ],
-            capabilities: [
-                .fileAccess(.musicFolder, mode: .readOnly)
             ]
         )
     ],

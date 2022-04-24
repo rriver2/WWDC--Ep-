@@ -1,16 +1,15 @@
 //
-//  HappinessView.swift
+//  HappyView.swift
 //  Peeling
 //
 //  Created by 이가은 on 2022/04/20.
 //
 import SwiftUI
-import AVKit
+import AVFoundation
 
-struct HappinessView: View {
+struct HappyView: View {
     @State var scale : CGFloat = 0.5
     @State var audio : AVAudioPlayer!
-//    @State var offset : CGSize = CGSize(width: .random(in: 20...100), height: .random(in: 20...100))
     
     var body: some View {
         
@@ -37,17 +36,20 @@ struct HappinessView: View {
                     self.audio = try! AVAudioPlayer(data: song!.data, fileTypeHint: "mp3")
                     self.audio.play()
         }
+        .onDisappear {
+            self.audio.stop()
+        }
         .background(Color.white)
         .overlay(
-            Text("Happiness")
+            Text("Happy")
                 .font(.custom("AvenirNextCondensed-Regular", size: 40))
         )
         .ignoresSafeArea(.all, edges: [.bottom,.top])
     }
 }
 
-//struct HappinessView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HappinessView()
-//    }
-//}
+struct HappyView_Previews: PreviewProvider {
+    static var previews: some View {
+        HappyView()
+    }
+}

@@ -1,27 +1,27 @@
 //
-//  BordomView.swift
+//  BoredView.swift
 //  Peeling
 //
 //  Created by 이가은 on 2022/04/20.
 //
 
 import SwiftUI
-import AVKit
+import AVFoundation
 
-struct BordomView: View {
+struct BoredView: View {
     
     @State var currentDate = Date()
     let timer = Timer.publish(every: 1, on: .main, in: .common).autoconnect()
     
     @State var audio : AVAudioPlayer!
     
-    @State var astronautPosition : CGSize = CGSize(width: .random(in: 500...1300),height: .random (in: 500...1300))
+    @State var astronautPosition : CGSize = CGSize(width: .random(in: 500...UIScreen.main.bounds.width),height: .random (in: 500...UIScreen.main.bounds.height))
     
     @State var rotation : Double = 0.0
     
     @State var movingInfinity : Bool = false
     
-    @State var duration : Double = 30.0
+    @State var duration : Double = 50.0
     
     func gerTime(currentDate : Date)->String{
     let formatter = DateFormatter()
@@ -52,14 +52,14 @@ struct BordomView: View {
                     withAnimation(Animation.easeInOut(duration: self.duration)
                         .repeatForever(autoreverses: true)
                     ) {
-                        self.astronautPosition = CGSize(width: .random(in: 500...1300),height: .random (in: 500...1300))
+                        self.astronautPosition = CGSize(width: .random(in: 500...UIScreen.main.bounds.width),height: .random (in: 500...UIScreen.main.bounds.height))
                         self.rotation = .random(in: 0...100)
                     }
                 }
         }
         .overlay(
             VStack{
-                Text("Bordom").foregroundColor(Color.white)
+                Text("Bored").foregroundColor(Color.white)
                     .font(.custom("AvenirNextCondensed-Regular", size: 40))
                 Text("\(gerTime(currentDate: currentDate))")
                     .onReceive(timer) { input in
@@ -72,17 +72,19 @@ struct BordomView: View {
             }
         )
         .onAppear{
-            let song = NSDataAsset (name: "BordomMusic")
+            let song = NSDataAsset (name: "BoredMusic")
             self.audio = try! AVAudioPlayer(data: song!.data, fileTypeHint: "mp3")
             self.audio.play()
+        }
+        .onDisappear {
+            self.audio.stop()
         }
         .ignoresSafeArea(.all, edges: [.bottom,.top])
     }
 }
 
-struct BordomView_Previews: PreviewProvider {
+struct BoredView_Previews: PreviewProvider {
     static var previews: some View {
-        BordomView()
-        //.preferredColorScheme(.dark)
+        BoredView()
     }
 }

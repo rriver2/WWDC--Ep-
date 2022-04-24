@@ -42,13 +42,13 @@ struct ContentView: View {
                                                 Spacer()
                                                 Spacer()
                                             }
-                                            .frame(width: 300.0, height: 500.0)
+                                            .frame(width: UIScreen.main.bounds.width/3, height: (UIScreen.main.bounds.width/3)*1.5)
                                             .foregroundColor(.white)
                                         }
                                     )
                                     .offset(x: 0, y: geomitry.size.height / 2.5 )
                                     .rotation3DEffect(.degrees(Double(geomitry.frame(in: .global).minX / -10)), axis: (x: 0.0, y: 0.0, z: 2.0))
-                                    .frame(width: 300.0, height: 500.0)
+                                    .frame(width: UIScreen.main.bounds.width/3, height: (UIScreen.main.bounds.width/3)*1.5)
                                     .shadow(color: FeelingCardColor[FeelingCard[index]]!.opacity(0.7), radius: 20,x: 15,y:15)
                             }
                             .frame(width: 250.0, height: UIScreen.main.bounds.height)
@@ -63,16 +63,8 @@ struct ContentView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .accentColor(
-            openViewName == "Sadness" || openViewName == "Bordom" || openViewName == "Calm" ? Color.white : Color.black
+            openViewName == "Sad" || openViewName == "Bored" || openViewName == "Calm" || openViewName == "Scared" ? Color.white : Color.black
         )
-        .onAppear{
-                for family: String in UIFont.familyNames {
-                                print(family)
-                                for names : String in UIFont.fontNames(forFamilyName: family){
-                                    print("=== \(names)")
-                                }
-                            }
-        }
     }
 }
 

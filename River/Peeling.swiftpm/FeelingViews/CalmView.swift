@@ -6,7 +6,7 @@
 //
 
 import SwiftUI
-import AVKit
+import AVFoundation
 
 struct CalmView: View {
     
@@ -14,7 +14,6 @@ struct CalmView: View {
     
     @State var rate1 : Double = 8.0
     @State var rate2 : Double = 7.0
-    
     @State var audio : AVAudioPlayer!
     @State var isViewExplanation = true
     
@@ -34,7 +33,7 @@ struct CalmView: View {
         .frame(width: 500, height: 500)
         .background(Color.white)
         .mask(
-            ShapWave(name: shapeCalm).rotationEffect(.degrees(180))
+                ShapWave(name: shapeCalm).rotationEffect(.degrees(180))
         )
         .animation(Animation.easeIn(duration: 3), value: shapeCalm)
         .overlay(
@@ -67,12 +66,15 @@ struct CalmView: View {
         .background(Color.init(red: 78/255, green: 157/255, blue: 202/255))
         .ignoresSafeArea(.all, edges: [.bottom,.top])
         .onAppear {
-            let song = NSDataAsset (name: "calmMusic")
+            let song = NSDataAsset (name: "ssasd")
             self.audio = try! AVAudioPlayer(data: song!.data, fileTypeHint: "mp3")
             self.audio.play()
             DispatchQueue.main.asyncAfter(deadline: .now() + 2){
                 self.isViewExplanation = false
             }
+        }
+        .onDisappear {
+            self.audio.stop()
         }
     }
 }
