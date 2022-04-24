@@ -15,16 +15,18 @@ YouTube URL:
 
 -------
 ### Happy
-I wanted to express that happy comes to life every moment in a different shape.
+<p>I wanted to express that happy comes to life every moment in a different shape.
 Through the animation of SWiftUI, various bubbles were implemented to appear randomly.
-<a href="url"><img src="https://user-images.githubusercontent.com/82457928/164972039-5c5042e3-6916-49b3-a707-52d4090db2c7.gif" align="left" width="200" ></a>
+<a href="url"><img src="https://user-images.githubusercontent.com/82457928/164972039-5c5042e3-6916-49b3-a707-52d4090db2c7.gif" align="left" width="200" ></a></p>
+
 -------
+
 ### Scared
-I think scared begins by imagining the whole that is not yet visible through the part that is now visible.
+<p>I think scared begins by imagining the whole that is not yet visible through the part that is now visible.
 A black screen is displayed with dreary music, and only a part of the picture can be checked with a small circle that the user can see by touching.
 
 
-<a href="url"><img src="https://user-images.githubusercontent.com/82457928/164972046-fdd9f0e4-b1c8-40f7-85da-29dce984360b.gif" align="left" width="200" ></a>
+<a href="url"><img src="https://user-images.githubusercontent.com/82457928/164972046-fdd9f0e4-b1c8-40f7-85da-29dce984360b.gif" align="left" width="200" ></a></p>
 
 -------
 
