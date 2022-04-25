@@ -75,24 +75,24 @@ CHOSIC: https://www.chosic.com/free-music/all/
 Scared, Angry music, which corresponds to the public domain music according to the usage specified in the CHOSIC, did not disclose additional licenses.
 In addition, the music corresponding to Creative Commons music stated the author below.
 
-#### Happy Music
+#### Happy
 Happy Commercial by MaxKoMusic | https://maxkomusic.com/
 Music promoted by https://www.chosic.com/free-music/all/
 Creative Commons Attribution-ShareAlike 3.0 Unported
 https://creativecommons.org/licenses/by-sa/3.0/deed.en_US
 
-#### Calm Music
+#### Calm 
 Soon We’ll Fly by Ghostrifter Official | https://soundcloud.com/ghostrifter-official
 Creative Commons — Attribution-NoDerivs 3.0 Unported — CC BY-ND 3.0
 Music promoted by https://www.chosic.com/free-music/all/
 
-#### Bored Music
+#### Bored 
 Spatium by Keys of Moon | https://soundcloud.com/keysofmoon
 Music promoted by https://www.chosic.com/free-music/all/
 Attribution 4.0 International (CC BY 4.0)
 https://creativecommons.org/licenses/by/4.0/
 
-#### Sad Music
+#### Sad 
 After the Rain by Keys of Moon | https://soundcloud.com/keysofmoon
 Music promoted by https://www.chosic.com/free-music/all/
 Creative Commons CC BY 4.0
