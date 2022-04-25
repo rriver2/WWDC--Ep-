@@ -10,8 +10,9 @@ Some emotions fall from the sky like rain, and some emotions erupt from deep ins
 However, emotions are trapped in a space called "words" and delivered to others.
 
 Therefore, words expressing emotions are convenient in expressing my mind, but it is difficult to explain the subtle difference.
-In this Gaeun's WWDC, "Happy", "Scared", "Calm", "Bored", "Angry", and "Sad" were peeled and expressed in terms of "hearing" and "visual" elements.
-It's a shame that it seems to express only a part of the meaning of each emotion, but I hope you enjoy using the app.
+So I wanted to express my feelings in something other than words.
+In this EP App, "Happy", "Scared", "Calm", "Bored", "Angry", and "Sad" were peeled and expressed in terms of "hearing" and "visual" elements.
+I hope you enjoy using the app.
 
 YouTube URL:
 
