@@ -14,7 +14,7 @@ So I wanted to express my feelings in something other than words.
 In this EP App, "Happy", "Scared", "Calm", "Bored", "Angry", and "Sad" were peeled and expressed in terms of "hearing" and "visual" elements.
 I hope you enjoy using the app.
 
-YouTube URL:
+YouTube URL:https://youtu.be/3Zs8-WDB4Kg
 
 -------
 
