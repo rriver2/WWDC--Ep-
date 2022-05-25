@@ -12,9 +12,9 @@ However, emotions are trapped in a space called "words" and delivered to others.
 Therefore, words expressing emotions are convenient in expressing my mind, but it is difficult to explain the subtle difference.
 So I wanted to express my feelings in something other than words.
 In this EP App, "Happy", "Scared", "Calm", "Bored", "Angry", and "Sad" were peeled and expressed in terms of "hearing" and "visual" elements.
-I hope you enjoy using the app.
-
-YouTube URL:https://youtu.be/dlJ5vSMpnMk
+I hope that through this app, people can empathize with and refute my expression and express their feelings in other things than words.
+<br/>
+### 🎬 [YouTube URL](https://youtu.be/X5ij9X1Gq-A)
 
 -------
 
