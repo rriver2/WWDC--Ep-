@@ -1,6 +1,7 @@
 
 
-# WWDC/ App, "Ep"
+# "Ep" / WWDC22 Swift Student Challenge [Accepted]
+
 ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/82457928/164973528-5f111b0a-c1ba-4d33-89b4-87611bb925a6.gif)
 
 ## :pushpin: Features
