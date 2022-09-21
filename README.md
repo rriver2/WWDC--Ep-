@@ -15,6 +15,7 @@ So I wanted to express my feelings in something other than words.
 In this EP App, "Happy", "Scared", "Calm", "Bored", "Angry", and "Sad" were peeled and expressed in terms of "hearing" and "visual" elements.
 I hope that through this app, people can empathize with and refute my expression and express their feelings in other things than words.
 <br/>
+### [LinkedIn](https://www.linkedin.com/pulse/%25E3%2585%2581wwdc22-swift-%25ED%2595%2599%25EC%2583%259D-%25EC%25B1%258C%25EB%25A6%25B0%25EC%25A7%2580-%25EC%259C%2584%25EB%2584%2588-%25EC%258A%25A4%25ED%2586%25A0%25EB%25A6%25AC-part-1-eunjeong-gwen-kim/?trackingId=fJPWeSc0TOugZgZYflgScw%3D%3D)
 ### 🎬 [YouTube URL](https://youtu.be/X5ij9X1Gq-A)
 
 -------
